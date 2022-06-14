@@ -1,0 +1,47 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pizzabackend
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: pizzabackend
+    spec:
+      containers:
+      - name: pizzabackend
+        image: zeierm/pizzabackend:latest
+        ports:
+        - containerPort: 80
+        env:
+        - name: ASPNETCORE_URLS
+          value: http://*:80
+  selector:
+    matchLabels:
+      app: pizzabackend
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: pizzabackend
+spec:
+  type: ClusterIP # only accessible from other services running from within the same Kubernetes cluster
+  ports:
+  - port: 80
+  selector:
+    app: pizzabackend
+
+
+
+# Deploy: kubectl apply -f backend-deploy.yml
+
+# Check status: kubectl get pods
+
+## Prerequisites
+#   configure kubectl to use docker-desktop: "kubectl config use-context docker-desktop" / check with "kubectl config get-contexts"
+#   push image t DockerHub: docker push zeierm/pizzabackend
+
+# scale: kubectl scale --replicas=5 deployment/pizzabackend
+
