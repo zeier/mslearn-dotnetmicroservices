@@ -1,0 +1,39 @@
+version: '3.4'
+
+services: 
+
+  # frontend service
+  frontend:
+    image: pizzafrontend
+    build:
+      context: frontend
+      dockerfile: Dockerfile
+    # environment variable for the frontend
+    environment: 
+      - backendUrl=http://backend
+    ports:
+      - "5902:80"
+    depends_on: 
+      - backend
+
+  # backend service
+  backend:
+    image: pizzabackend
+    build: 
+      context: backend
+      dockerfile: Dockerfile
+    ports: 
+      - "5000:80"
+
+
+##
+# Build: docker-compose build
+##
+
+##
+# Run: docker-compose up
+##
+
+##
+# Access frontend locally at http://localhost:5902
+##
