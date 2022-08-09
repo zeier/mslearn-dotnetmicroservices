@@ -30,13 +30,17 @@ ENTRYPOINT ["dotnet", "backend.dll"]
 
 
 ##
-# Build the image: docker build -t pizzabackend .
+# Build the image: run "docker build -t pizzabackend ." from the `backend` folder.
 #
 # This runs the commands in the Dockerfile in the current directory and applies the tag pizzabackend to the resulting image.
+#
+# Run command "docker images" to check that the image has been created.
 ##
 
 ##
 # Run a container: docker run -it --rm -p 5200:80 --name pizzabackendcontainer pizzabackend
 #
 # --rm Automatically remove the container when it exits
+#
+# The backend can be reached at "http://localhost:5200/pizzainfo".
 ##
