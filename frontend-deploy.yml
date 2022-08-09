@@ -35,11 +35,13 @@ spec:
   selector:
     app: pizzafrontend
 
+## Prerequisites
+#   enable Kubernetes in Docker Desktop
+#   configure kubectl to use docker-desktop: "kubectl config use-context docker-desktop" / check with "kubectl config get-contexts"
+#   push image t DockerHub: docker push zeierm/pizzafrontend
 
 # Deploy: kubectl apply -f frontend-deploy.yml
 
 # Check status: kubectl get pods
 
-## Prerequisites
-#   configure kubectl to use docker-desktop: "kubectl config use-context docker-desktop" / check with "kubectl config get-contexts"
-#   push image t DockerHub: docker push zeierm/pizzafrontend
+# Access frontend: http://localhost

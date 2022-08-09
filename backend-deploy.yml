@@ -35,13 +35,14 @@ spec:
 
 
 
+## Prerequisites
+#   enable Kubernetes in Docker Desktop
+#   configure kubectl to use docker-desktop: "kubectl config use-context docker-desktop" / check with "kubectl config get-contexts"
+#   push image t DockerHub: docker push zeierm/pizzabackend
+
 # Deploy: kubectl apply -f backend-deploy.yml
 
 # Check status: kubectl get pods
-
-## Prerequisites
-#   configure kubectl to use docker-desktop: "kubectl config use-context docker-desktop" / check with "kubectl config get-contexts"
-#   push image t DockerHub: docker push zeierm/pizzabackend
 
 # scale: kubectl scale --replicas=5 deployment/pizzabackend
 
